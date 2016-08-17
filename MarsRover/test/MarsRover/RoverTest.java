@@ -1,6 +1,5 @@
 package MarsRover;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -13,11 +12,11 @@ public class RoverTest {
 	public void shouldBeAbleToVerifyIfROverChangesDirection(){
 
 	Rover rover=new Rover(1,2,Direction.N);
-	assertEquals(rover.findNewDirection('L'),'W');
+	assertEquals(rover.getNextDirection('L'),'W');
 }
 @Test
 	public void shouldBeAbleToMove(){
 	Rover rover=new Rover(1,2,Direction.N);
-	//assertArrayEquals(rover.findNewDirection('M'),);
+	assertArrayEquals(rover.getNextDirection('M'),);
 }
 }

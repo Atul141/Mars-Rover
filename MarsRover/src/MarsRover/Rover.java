@@ -2,19 +2,21 @@ package MarsRover;
 
 // Represents a Rover
 
+import java.util.Map;
+
 public class Rover {
 
-	private int xCoordinates;
-	private int yCoordinates;
 	private Direction direction;
-
+	private Coordinates coordinates;
+	private Map<Character,Direction> mapOfDirections;
 	public Rover(int xCoordinates, int yCoordinates, Direction direction) {
-		this.xCoordinates = xCoordinates;
-		this.yCoordinates = yCoordinates;
+		coordinates =new Coordinates(xCoordinates,yCoordinates);
 		this.direction = direction;
+	mapOfDirections=new MarsRoverDriver().getMapOfDirections();
 	}
 
-	public char findNewDirection(char side) {
+
+	public char getNextDirection(char side) {
 		if (side == 'M') {
 			char currentDirection = direction.getDirection(side);
 			return currentDirection;
@@ -24,7 +26,10 @@ public class Rover {
 	}
 	public void move(char side){
 
-	//	Rover rover=new Rover(xCoordinates+direction.getXFactor(),yCoordinates+direction.getYFactor(),findNewDirection(side));
+		Rover rover=new Rover(coordinates.getxCoordinates()+direction.getXFactor(),coordinates.getyCoordinates()+direction.getYFactor(),mapOfDirections.get(side));
 
+	}
+	public Coordinates getCurrentPosition(){
+		return coordinates;
 	}
 }
