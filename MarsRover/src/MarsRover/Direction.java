@@ -3,7 +3,7 @@ package MarsRover;
 // Maps different directions
 public enum Direction {
 
-	N('W', 'E' ,0, -1), S('E', 'W',0,1), W('N', 'S',-1,0), E('N', 'S',1,0);
+	N('W', 'E' ,0, 1), S('E', 'W',0,-1), W('S', 'N',1,0), E('N', 'S',-1,0);
 
 	private char left;
 	private char right;
