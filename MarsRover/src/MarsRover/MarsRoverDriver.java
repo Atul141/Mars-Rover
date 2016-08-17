@@ -18,10 +18,14 @@ import java.util.Map;
 		return mapOfDirections;
 	}
 
-	public void moveRover(char[] directions, Rover rover) {
-		for (char direction : directions) {
-			rover = rover.move(direction);
-			coordinates = rover.getCurrentPosition();
+	public void moveRover(char[] directions, Rover rover,Grid grid) throws OutSideGrid {
+		try {
+			for (char direction : directions) {
+				rover = rover.move(direction, grid);
+				coordinates = rover.getCurrentPosition();
+			}
+		}catch (OutSideGrid e){
+			System.out.println("Rover trying to go outside the grid");
 		}
 		System.out.println(coordinates.getxCoordinates() + "  " + coordinates.getyCoordinates() + " " + coordinates.getDirection());
 

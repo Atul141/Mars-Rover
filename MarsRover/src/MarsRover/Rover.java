@@ -10,14 +10,17 @@ public class Rover {
 	private Coordinates coordinates;
 	private Map<Character, Direction> mapOfDirections;
 
+
 	public Rover(int xCoordinates, int yCoordinates, Direction direction) {
 		coordinates = new Coordinates(xCoordinates, yCoordinates,direction);
 		mapOfDirections = new MarsRoverDriver().getMapOfDirections();
 	}
 
-	public Rover move(char side) {
+	public Rover move(char side,Grid grid) throws OutSideGrid {
 		if (side == 'M') {
+			if((grid.checkIfInsideGrid(coordinates.getxCoordinates() + coordinates.getDirection().getXFactor(), coordinates.getyCoordinates() + coordinates.getDirection().getYFactor())))
 			return new Rover(coordinates.getxCoordinates() + coordinates.getDirection().getXFactor(), coordinates.getyCoordinates() + coordinates.getDirection().getYFactor(),coordinates.getDirection());
+			throw new OutSideGrid();
 		}
 		return new Rover(coordinates.getxCoordinates(), coordinates.getyCoordinates(), mapOfDirections.get(coordinates.getDirection().getDirection(side)));
 
